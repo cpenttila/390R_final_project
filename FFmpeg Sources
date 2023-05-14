@@ -1,0 +1,16 @@
+Here is the website where you can download FFmpeg:
+
+Here is the link to installing AFL++ to your machine:
+
+Here is the compilation guide we used to compile FFmpeg on our machines:
+
+This is the link to the samples that we found to help with our seed corpus:
+
+When we had trouble with the error Target Not Instrumented:
+
+The author of this blog also has a bunch of youtube videos on Installing and fuzzing with AFL++:
+
+This is a link to the OSS-FUZZ project from Google:
+
+Here is some more resources on FFmpeg and different projects that have analyzed FFmpeg:
+
