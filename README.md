@@ -16,7 +16,7 @@ Our first step was to look at the source code and do some static analysis. So we
 
 Here is a picture of ghidra in the main function.
 
-[ghidra](./Images/ghidra.png)
+![ghidra](./Images/ghidra.png)
 
 However, it was hard to find anything exploitable considering that it has over 260,000+ lines of executable code. So we decided to understand the structure of the files for ffmpeg to narrow the areas of focus. 
 
@@ -28,7 +28,15 @@ Libavcodec - codecs (encoding/decoding library)
 Libavdevice - special devices (muxing/demuxing library)
 Libavfilter, libswresample, libpostproc, libswscale - post-processing
 
-Another important factor to look at is the coverage in the code. We found resources that displayed the coverage by function and by file(these links are in the FFmpeg sources file). Considering that the overall coverage was 
+Another important factor to look at is the coverage in the code. We found resources that displayed the coverage by function and by file(these links are in the FFmpeg sources file). Considering that there were areas that didn't have 100% coverage, we figured that there are exploitable parts of the code. Here is a summary of the overall code including coverage.
+
+![coverage_stats](./Images/coverage_stats.png)
+
+Another important aspect was understanding the data structures that were used to understand how the processing happens. In FFmpeg, structures such as AVFormatContext, AVStream, AVCodecContext, AVCodec, are used to abstract the different parts of media. We did some research into the data structures used to understand their purpose and the functionalities. We made a flow chart so that its easier to read, and here are the names of all the main data structures and what they are used for. 
+
+![data_structures](./Images/data_structures.png)
+
+
 
 After we compiled the program we needed to begin our analysis. Since this program has been fuzzed by many people already, we started by looking into some of the work already done for program analysis. Some bigger companies that have worked with FFmpeg include AFL++ and Google's OSS-FUZZ project. Like some projects before, we decided to use AFL++ to fuzz FFmpeg. We did not originally have a seed corpus that worked for our project but after researching more about the previous fuzzing projects on FFmpeg, we were able to find some examples that helped us set up an environment as a proof od concept. 
 
