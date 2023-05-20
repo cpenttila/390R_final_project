@@ -4,6 +4,14 @@ Here is the link to installing AFL++ to your machine: https://github.com/AFLplus
 
 Here is the compilation guide we used to compile FFmpeg on our machines: https://trac.ffmpeg.org/wiki/CompilationGuide
 
+Here is the link to the name of all the files in FFmpeg: https://ffmpeg.org/doxygen/5.1/files.html
+
+Here is the link to the file coverage: http://coverage.ffmpeg.org
+
+Here is the link to the function coverage: http://coverage.ffmpeg.org/index.functions.html
+
+Here is the link to understanding all the basic libaray functions: https://ffmpeg.org/doxygen/5.1/index.html
+
 This is the link to the samples that we found to help with our seed corpus: https://samples.ffmpeg.org/
 
 When we had trouble with the error Target Not Instrumented: https://hardik05.wordpress.com/2020/08/22/fuzzing-ffmpeg-with-afl-on-ubuntu/

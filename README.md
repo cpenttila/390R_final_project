@@ -12,6 +12,24 @@ FFmpeg Progress
 
 FFmpeg is an open source program used by many big companies. as it is used widley across the internet, it has also been fuzzed by a lot of people. When we began to look at this software program, we needed to first install the software to our machine and then use a type of program analysis on the program. Installing FFmpeg turned out to be a little more difficult than originally thought. We were having problems compiling the program but we were able to find a compilation guide on the FFmpeg website that allowed us to succesfully compile the program so that we could use it and analyze it. 
 
+Our first step was to look at the source code and do some static analysis. So we loaded the file onto Ghidra and we went through some parts of the code to try and understand exactly how it worked, our first goal was to find the main function using libc_start_main and understand the function flow from main. 
+
+Here is a picture of ghidra in the main function.
+
+[ghidra](./Images/ghidra.png)
+
+However, it was hard to find anything exploitable considering that it has over 260,000+ lines of executable code. So we decided to understand the structure of the files for ffmpeg to narrow the areas of focus. 
+
+Our research and analysis lead us to understanding the following about the main libraries of ffmpeg:
+
+Libavutil - core tools
+Libavformat - media formats
+Libavcodec - codecs (encoding/decoding library)
+Libavdevice - special devices (muxing/demuxing library)
+Libavfilter, libswresample, libpostproc, libswscale - post-processing
+
+Another important factor to look at is the coverage in the code. We found resources that displayed the coverage by function and by file(these links are in the FFmpeg sources file). Considering that the overall coverage was 
+
 After we compiled the program we needed to begin our analysis. Since this program has been fuzzed by many people already, we started by looking into some of the work already done for program analysis. Some bigger companies that have worked with FFmpeg include AFL++ and Google's OSS-FUZZ project. Like some projects before, we decided to use AFL++ to fuzz FFmpeg. We did not originally have a seed corpus that worked for our project but after researching more about the previous fuzzing projects on FFmpeg, we were able to find some examples that helped us set up an environment as a proof od concept. 
 
 Our next steps after proving that we could fuzz FFmpeg with AFL++ is to create a harness for FFmpeg so that we can look at just certain parts of the code. Once we started examining the code for FFpeg, we realized that there was too much to look at as a whole so we needed to find one or two portions of the code to focus on. For us, we wanted to look closely at the demuxing and muxing parts of the code. To fuzz these specific portions, we needed to create a harness for FFmpeg that will work with AFL++. while we were working on the harness, we also were getting a better understanding on how FFmpeg works. 
