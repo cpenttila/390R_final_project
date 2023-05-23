@@ -42,6 +42,4 @@ After we compiled the program we needed to begin our analysis. Since this progra
 
 Our next steps after proving that we could fuzz FFmpeg with AFL++ is to create a harness for FFmpeg so that we can look at just certain parts of the code. Once we started examining the code for FFpeg, we realized that there was too much to look at as a whole so we needed to find one or two portions of the code to focus on. For us, we wanted to look closely at the demuxing and muxing parts of the code. To fuzz these specific portions, we needed to create a harness for FFmpeg that will work with AFL++. while we were working on the harness, we also were getting a better understanding on how FFmpeg works. 
 
-Looking at the code and other online resources, we got more knowledge on how FFmpeg interacts with the multimedia data that is being handled. < here is where i think we should talk about the different data structures >. 
-
-After looking at the program as a whole, we took a deeper look at the demuxing and muxing portions of the code to get a deeper understanding of what these parts of the software are doing. First we looked at the demuxing part.
+Looking at the code and other online resources, we got more knowledge on how FFmpeg interacts with the multimedia data that is being handled. After looking at the program as a whole, we took a deeper look at the demuxing and muxing portions of the code to get a deeper understanding of what these parts of the software are doing. First we looked at the demuxing part.
